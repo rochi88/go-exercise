@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	const totalSeat uint = 50
-	var remainingSeat uint
+	var remainingSeat uint = totalSeat
 	var bookings []string
 
 	var firstName string
@@ -13,23 +13,23 @@ func main() {
 	var seats uint
 
 	for {
-		fmt.Printf("Please enter first name")
+		fmt.Printf("Please enter first name: ")
 		fmt.Scan(&firstName)
 
-		fmt.Printf("Please enter last name")
+		fmt.Printf("Please enter last name: ")
 		fmt.Scan(&lastName)
 
-		fmt.Printf("Please enter email")
+		fmt.Printf("Please enter email: ")
 		fmt.Scan(&email)
 
-		fmt.Printf("Please enter required seats")
+		fmt.Printf("Please enter required seats: ")
 		fmt.Scan(&seats)
 
 		bookings = append(bookings, firstName, " ", lastName)
-		remainingSeat = totalSeat - seats
+		remainingSeat = remainingSeat - seats
 
 		fmt.Printf("%v", bookings)
-		fmt.Printf("Remaining seat: %v", remainingSeat)
+		fmt.Printf("Remaining seat: %v \n", remainingSeat)
 
 	}
 }
