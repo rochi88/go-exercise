@@ -10,5 +10,5 @@ func main() {
 	temp := 1
 
 	fmt.Println("Checking the uses of variables")
-	fmt.Printf("Name is %v, Days is %v, x is %v, y is %v, z is %v, temp is %v\n", name, days, x, y, z, temp)
+	fmt.Printf("Name is %v,\nDays is %v,\nx is %v,\ny is %v,\nz is %v,\ntemp is %v\n", name, days, x, y, z, temp)
 }
