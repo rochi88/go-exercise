@@ -1,0 +1,10 @@
+
+services:
+  app:
+    build: ./rest_api
+
+  db:
+    image: postgres:16
+
+volumes:
+  postgres-volume:
