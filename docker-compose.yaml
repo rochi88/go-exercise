@@ -6,7 +6,7 @@ services:
     ports:
       - 9000:9000
     environment:
-      - DATABASE_URL=postgresql://fastapi:fastapi@db/api
+      - DATABASE_URL=postgresql://kolaz:kolaz@db/api
 
   db:
     image: postgres:13
@@ -14,8 +14,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=fastapi
-      - POSTGRES_PASSWORD=fastapi
+      - POSTGRES_USER=kolaz
+      - POSTGRES_PASSWORD=kolaz
       - POSTGRES_DB=api
 
   redis:
