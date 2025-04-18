@@ -1,10 +1,36 @@
 
 services:
-  app:
+  api:
     build: ./rest_api
+    container_name: api
+    ports:
+      - 9000:9000
+    environment:
+      - DATABASE_URL=postgresql://fastapi:fastapi@db/api
 
   db:
-    image: postgres:16
+    image: postgres:13
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=fastapi
+      - POSTGRES_PASSWORD=fastapi
+      - POSTGRES_DB=api
+
+  redis:
+    # Redis is limited to 7.2-bookworm due to licencing change
+    # https://redis.io/blog/redis-adopts-dual-source-available-licensing/
+    image: redis:7.2-bookworm
+    expose:
+      - 6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 50
+      start_period: 30s
+    restart: always
 
 volumes:
-  postgres-volume:
+  postgres_data:
