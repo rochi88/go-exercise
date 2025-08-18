@@ -1,0 +1,41 @@
+name: Deploy Go Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: echo "PORT=${{ secrets.PORT }}" >> .env
+
+      - name: Login to Docker Hub
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t konami98/go-app .
+
+      - name: Push image to Docker Hub
+        run: docker push konami98/go-app:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull Docker image
+        run: docker pull konami98/go-app:latest
+
+      - name: Delete old container
+        run: docker rm -f go-app-container || true
+
+      - name: Run Docker container
+        run: docker run -d -p 8080:8080 --name go-app-container konami98/go-app:latest
