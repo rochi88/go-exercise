@@ -13,7 +13,10 @@ func zeroPVal(iptr *int) {
 func main() {
 	fmt.Println("=== Testing Pointer ===")
 
+	// Demonstrating pointer usage
 	val := 1
+	i, j := 45, 89
+	fmt.Println(&i, &j)
 
 	fmt.Println("Initial: ", val)
 	zeroVal(val)
@@ -22,4 +25,9 @@ func main() {
 	fmt.Println("ZeroPVal: ", val)
 	fmt.Println("Pointer address", &val)
 
+	// Exploring pointer types and nil pointers
+	var p *int
+	fmt.Println("Pointer ", &p)
+
+	fmt.Println("=== End Testing Pointer ===")
 }
