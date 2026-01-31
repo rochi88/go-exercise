@@ -1,0 +1,27 @@
+# Example: Database Configuration with Query Monitoring
+
+# Database configuration (used for both read and write databases)
+db_url: "postgres://postgres:postgres@localhost:5432/go_boilerplate_db?sslmode=disable"
+db_max_open_conns: 25
+db_max_idle_conns: 10
+db_conn_max_lifetime: "15m"
+db_conn_max_idle_time: "5m"
+db_retry_attempts: 3
+db_retry_delay: "2s"
+
+# Query monitoring - log queries taking longer than threshold
+db_slow_query_threshold: "1s"  # Options: "500ms", "2s", "0" (disable)
+
+# Read database URLs (optional - uses same settings as write DB)
+read_db_urls: []
+# Example with read/write splitting:
+# read_db_urls:
+#   - "postgres://postgres:postgres@localhost:5433/go_boilerplate_db?sslmode=disable"
+#   - "postgres://postgres:postgres@localhost:5434/go_boilerplate_db?sslmode=disable"
+
+# Example with read/write splitting:
+# read_db_urls:
+#   - "postgres://postgres:postgres@localhost:5433/go_boilerplate_db?sslmode=disable"
+#   - "postgres://postgres:postgres@localhost:5434/go_boilerplate_db?sslmode=disable"
+# JWT configuration
+jwt_expiry_hours: 24

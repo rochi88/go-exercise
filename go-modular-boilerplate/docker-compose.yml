@@ -1,0 +1,34 @@
+
+services:
+
+  postgres:
+    image: postgres:17-alpine
+    container_name: go-postgres-container
+    environment:
+      POSTGRES_DB: go_boilerplate_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - go-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: go-redis-container
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - go-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  go-network:
+    driver: bridge

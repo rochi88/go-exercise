@@ -1,0 +1,112 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+
+# Build artifacts
+build/
+dist/
+tmp/
+*.log
+logs/*.log
+logs/*.json
+bin/
+
+# Air live reload (Go development tool)
+build-errors.log
+.air.toml
+
+# Delve debugger
+__debug_bin
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Environment and configuration files
+.env
+.env.local
+.env.development
+.env.production
+configs/config.yaml
+configs/config.yml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# JWK keys and certificates
+jwk-keys/
+*.pem
+*.key
+*.crt
+
+# Test coverage
+coverage.out
+coverage.html
+*.cover
+
+# Profiling
+*.prof
+*.pprof
+
+# Go modules cache (optional, uncomment if needed)
+# .cache/
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# SQL dumps
+*.sql.gz
+*.dump
+
+# Migration temporary files
+migration/tmp/
+
+# Generated files (sqlc, protobuf, etc.)
+# Uncomment if you want to ignore generated files
+# internal/database/sqlc/*.go
+
+# Application logs
+app.log
+error.log
+access.log
+
+# Performance and monitoring
+metrics.json
+traces.json
+
